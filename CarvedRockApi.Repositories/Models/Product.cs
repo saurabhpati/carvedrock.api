@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CarvedRock.Api.Data.Entities
+namespace CarvedRock.Repositories.Models
 {
     public class Product
     {

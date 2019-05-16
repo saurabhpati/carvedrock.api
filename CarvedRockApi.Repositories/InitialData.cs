@@ -1,4 +1,4 @@
-﻿using CarvedRock.Api.Data.Entities;
+﻿using CarvedRock.Repositories.Models;
 using System;
 using System.Linq;
 
