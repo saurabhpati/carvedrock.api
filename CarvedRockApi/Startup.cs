@@ -25,10 +25,12 @@ namespace CarvedRockApi
         {
             services.AddDbContext<CarvedRockDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CarvedRock")));
             services.AddGraphQL(o => { o.ExposeExceptions = false; })
-                .AddGraphTypes(ServiceLifetime.Scoped);
+                .AddGraphTypes(ServiceLifetime.Scoped)
+                .AddDataLoader();
 
             services
                 .AddScoped(typeof(IRepository<,>), typeof(Repository<,>))
+                .AddScoped<IProductReviewRepository, ProductReviewRepository>()
                 .AddScoped<CarvedRockSchema>()
                 .AddScoped<IDependencyResolver>(provider => new FuncDependencyResolver(provider.GetRequiredService));
         }
