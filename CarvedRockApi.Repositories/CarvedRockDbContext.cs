@@ -1,4 +1,5 @@
 ﻿using CarvedRock.Repositories.Models;
+using CarvedRockApi.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarvedRock.Api.Data
@@ -10,5 +11,7 @@ namespace CarvedRock.Api.Data
             
         }
         public DbSet<Product> Products { get; set; }
+
+        public DbSet<ProductReview> ProductReviews { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using CarvedRock.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CarvedRockApi.Repositories.Migrations
 {
     [DbContext(typeof(CarvedRockDbContext))]
-    partial class CarvedRockDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190519114027_review-set")]
+    partial class reviewset
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

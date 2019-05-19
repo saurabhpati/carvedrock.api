@@ -1,4 +1,5 @@
 ﻿using CarvedRock.Api.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
@@ -21,6 +22,16 @@ namespace CarvedRockApi.Repositories
             return predicate == null
                 ? Task.FromResult(_context.Set<TEntity>().AsQueryable())
                 : Task.FromResult(_context.Set<TEntity>().Where(predicate));
+        }
+
+        public Task<IQueryable<TEntity>> GetAllAsync<TProperty>(
+            Expression<Func<TEntity, bool>> predicate = null, 
+            Expression<Func<TEntity, TProperty>> navigationPropertyPath = null)
+        {
+            var query = _context.Set<TEntity>().AsQueryable();
+            return predicate == null
+                ? Task.FromResult(query.Include(navigationPropertyPath).AsQueryable())
+                : Task.FromResult(query.Where(predicate).Include(navigationPropertyPath).AsQueryable());
         }
 
         public Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
